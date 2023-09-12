@@ -11,3 +11,9 @@ const compArray = ["rock", "paper", "scissors"];
 function getComputerChoice() {
 	return compArray[~~(Math.random() * compArray.length)];
 }
+
+function getPlayerChoice() {
+	playerChoice = prompt("Choose your weapon: rock, paper or scissors");
+	playerChoiceLower = playerChoice.toLowerCase();
+	return playerChoiceLower;
+}
