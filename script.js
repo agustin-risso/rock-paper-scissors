@@ -17,3 +17,20 @@ function getPlayerChoice() {
 	playerChoiceLower = playerChoice.toLowerCase();
 	return playerChoiceLower;
 }
+
+function playRound(playerSelection, computerSelection) {
+	if (playerSelection == computerSelection) {
+		roundWinner = 1;
+		return roundWinner;
+	} else if (
+		(playerSelection == "paper" && computerSelection == "rock") ||
+		(playerSelection === "rock" && computerSelection == "scissors") ||
+		(playerSelection === "scissors" && computerSelection == "paper")
+	) {
+		roundWinner = 2;
+		return roundWinner;
+	} else {
+		roundWinner = 3;
+		return roundWinner;
+	}
+}
