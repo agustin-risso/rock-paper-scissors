@@ -34,3 +34,59 @@ function playRound(playerSelection, computerSelection) {
 		return roundWinner;
 	}
 }
+
+function game() {
+	do {
+		playerSelection = getPlayerChoice();
+		computerSelection = getComputerChoice();
+		roundWinner = playRound(playerSelection, computerSelection);
+		if (roundWinner == 2) {
+			userScore = ++userScore;
+			console.log(
+				"You choose: " +
+					playerSelection +
+					". Computer choose: " +
+					computerSelection +
+					".\n" +
+					playerSelection +
+					" beats " +
+					computerSelection +
+					"\nPlayer: " +
+					userScore +
+					"\nComputer: " +
+					computerScore
+			);
+		} else if (roundWinner == 3) {
+			computerScore = ++computerScore;
+			console.log(
+				"You choose: " +
+					playerSelection +
+					". Computer choose: " +
+					computerSelection +
+					".\n" +
+					computerSelection +
+					" beats " +
+					playerSelection +
+					"\nPlayer: " +
+					userScore +
+					"\nComputer: " +
+					computerScore
+			);
+		} else {
+			console.log(
+				"You choose: " +
+					playerSelection +
+					". Computer choose: " +
+					computerSelection +
+					".\nIt's a tie."
+			);
+		}
+	} while (userScore != 5 && computerScore != 5);
+	if (userScore > computerScore) {
+		return "You won the match";
+	} else {
+		return "You lost the match";
+	}
+}
+
+console.log(game());
