@@ -26,7 +26,6 @@ body {
 	justify-content: center;
 	gap: 1rem;
 	position: relative;
-	border-bottom: 1px solid #000;
 	margin-bottom: 0.5rem;
 }
 
@@ -49,8 +48,8 @@ body {
 	align-items: center;
 	justify-content: center;
 	list-style: none;
-	border-radius: 2rem;
-	box-shadow: 1rem 5.2rem 10rem 0.2rem #999;
+	background-color: #898989;
+	border-radius: 1.45rem;
 }
 
 .score-container h2 {
@@ -98,13 +97,13 @@ body {
 	cursor: pointer;
 	border: 1px solid transparent;
 	background-color: transparent;
-	outline: none;
 	transition: all 0.3s;
 }
 
 .game-buttons button:hover {
 	color: #fff;
 	transform: scale(1.25);
+	border: 1px solid transparent;
 }
 
 .game-buttons button img {
