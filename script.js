@@ -13,7 +13,7 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-	playerChoice = prompt("Choose your weapon: rock, paper or scissors");
+	/* playerChoice = prompt("Choose your weapon: rock, paper or scissors"); */
 	playerChoiceLower = playerChoice.toLowerCase();
 	return playerChoiceLower;
 }
