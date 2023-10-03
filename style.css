@@ -138,11 +138,13 @@ body {
 
 .rounds h2 {
 	font-size: 2rem;
+	text-align: center;
 }
 
 .rounds h3 {
 	font-size: 1.25rem;
 	font-weight: 400;
+	text-align: center;
 }
 
 footer {

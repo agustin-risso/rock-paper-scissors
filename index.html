@@ -15,12 +15,12 @@
 			<h2>SCORE</h2>
 			<div class="score">
 				<div>
-					<li>You</li>
-					<li class="score-number">-</li>
+					<li>Player</li>
+					<li class="score-number" id="player-score">-</li>
 				</div>
 				<div>
 					<li>Machine</li>
-					<li class="score-number">-</li>
+					<li class="score-number" id="machine-score">-</li>
 				</div>
 			</div>
 		</div>
@@ -29,20 +29,20 @@
 				<h2>Choose your weapon !</h2>
 			</div>
 			<div class="buttons-container">
-				<button class="rock-button">
+				<button class="rock-button weapon" value="rock">
 					<img src="images/stone_4746320.png" alt="" />
 				</button>
-				<button class="paper-button">
+				<button class="paper-button weapon" value="paper">
 					<img src="images/paper_4952848.png" alt="" />
 				</button>
-				<button class="scissors-button">
+				<button class="scissors-button weapon" value="scissors">
 					<img src="images/scissors_1444407.png" alt="" />
 				</button>
 			</div>
 		</div>
 		<div class="rounds">
-			<h2>The game is about to begin.</h2>
-			<h3>Good luck, have fun !</h3>
+			<h2 class="round-number">The game is about to begin.</h2>
+			<h3 class="round-details">Good luck, have fun !</h3>
 		</div>
 		<footer>made with ♡ by &#60;agusdev &#62;</footer>
 		<script src="script.js"></script>

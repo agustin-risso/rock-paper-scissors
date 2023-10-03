@@ -1,92 +1,89 @@
-let userScore = 0;
-let computerScore = 0;
-let roundWinner;
-let playerChoice;
-let playerChoiceLower;
-let playerSelection;
-let computerSelection;
+let page = document.querySelector("body");
+let userScore = document.querySelector("#player-score");
+let machineScore = document.querySelector("#machine-score");
+let weapons = document.querySelectorAll(".weapon");
+let roundNumber = document.querySelector(".round-number");
+let roundDetails = document.querySelector(".round-details");
+let round = 0;
+let roundWinner = 0;
+let userScoreAccumulator = 0;
+let machineScoreAccumulator = 0;
 
 const compArray = ["rock", "paper", "scissors"];
 
-function getComputerChoice() {
+function getMachineChoice() {
 	return compArray[~~(Math.random() * compArray.length)];
 }
 
-function getPlayerChoice() {
-	/* playerChoice = prompt("Choose your weapon: rock, paper or scissors"); */
-	playerChoiceLower = playerChoice.toLowerCase();
-	return playerChoiceLower;
-}
-
-function playRound(playerSelection, computerSelection) {
-	if (playerSelection == computerSelection) {
-		roundWinner = 1;
-		return roundWinner;
-	} else if (
-		(playerSelection == "paper" && computerSelection == "rock") ||
-		(playerSelection === "rock" && computerSelection == "scissors") ||
-		(playerSelection === "scissors" && computerSelection == "paper")
-	) {
-		roundWinner = 2;
-		return roundWinner;
-	} else {
-		roundWinner = 3;
-		return roundWinner;
-	}
-}
-
-function game() {
-	do {
-		playerSelection = getPlayerChoice();
-		computerSelection = getComputerChoice();
-		roundWinner = playRound(playerSelection, computerSelection);
-		if (roundWinner == 2) {
-			userScore = ++userScore;
-			console.log(
-				"You choose: " +
-					playerSelection +
-					". Computer choose: " +
-					computerSelection +
-					".\n" +
-					playerSelection +
-					" beats " +
-					computerSelection +
-					"\nPlayer: " +
-					userScore +
-					"\nComputer: " +
-					computerScore
-			);
-		} else if (roundWinner == 3) {
-			computerScore = ++computerScore;
-			console.log(
-				"You choose: " +
-					playerSelection +
-					". Computer choose: " +
-					computerSelection +
-					".\n" +
-					computerSelection +
-					" beats " +
-					playerSelection +
-					"\nPlayer: " +
-					userScore +
-					"\nComputer: " +
-					computerScore
-			);
-		} else {
-			console.log(
-				"You choose: " +
-					playerSelection +
-					". Computer choose: " +
-					computerSelection +
-					".\nIt's a tie."
-			);
+weapons.forEach((weaponElement) =>
+	weaponElement.addEventListener("click", () => {
+		if (userScoreAccumulator >= 5 || machineScoreAccumulator >= 5) {
+			return;
 		}
-	} while (userScore != 5 && computerScore != 5);
-	if (userScore > computerScore) {
-		return "You won the match";
+		game(weaponElement.value);
+	})
+);
+
+function game(weapon) {
+	let machineSelection = getMachineChoice();
+	round = round + 1;
+	roundNumber.innerHTML = "Round " + round;
+	roundWinner = playRound(weapon, machineSelection);
+	if (roundWinner == 2) {
+		userScoreAccumulator = userScoreAccumulator + 1;
+		userScore.innerHTML = userScoreAccumulator;
+		roundDetails.innerHTML =
+			"You choose: " +
+			weapon +
+			". Machine choose: " +
+			machineSelection +
+			", " +
+			weapon +
+			" beats " +
+			machineSelection +
+			".";
+	} else if (roundWinner == 3) {
+		machineScoreAccumulator = machineScoreAccumulator + 1;
+		machineScore.innerHTML = machineScoreAccumulator;
+		roundDetails.innerHTML =
+			"You choose: " +
+			weapon +
+			". Machine choose: " +
+			machineSelection +
+			", " +
+			machineSelection +
+			" beats " +
+			weapon +
+			".";
 	} else {
-		return "You lost the match";
+		roundDetails.innerHTML =
+			"You choose: " +
+			weapon +
+			". Computer choose: " +
+			machineSelection +
+			". It's a tie.";
+	}
+	if (userScore.innerHTML === "5") {
+		roundNumber.innerHTML = "YOU WON THE GAME !";
+	} else if (machineScore.innerHTML === "5") {
+		roundNumber.innerHTML = "YOU LOST THE GAME, THE MACHINE WINS :(";
 	}
 }
 
-console.log(game());
+function playRound(userWeapon, machineWeapon) {
+	let winner;
+	if (userWeapon == machineWeapon) {
+		winner = 1;
+		return winner;
+	} else if (
+		(userWeapon == "paper" && machineWeapon == "rock") ||
+		(userWeapon === "rock" && machineWeapon == "scissors") ||
+		(userWeapon === "scissors" && machineWeapon == "paper")
+	) {
+		winner = 2;
+		return winner;
+	} else {
+		winner = 3;
+		return winner;
+	}
+}
